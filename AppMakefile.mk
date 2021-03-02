@@ -47,7 +47,7 @@ $$(foreach arch, $$(TOCK_ARCHS), $$(eval LIBS_$$(arch) += $$($(notdir $(1))_BUIL
 endef
 
 # To see the generated rules, run:
-# $(info $(foreach lib, $(EXTERN_LIBS), $(call EXTERN_LIB_RULES,$(lib))))
+ $(info $(foreach lib, $(EXTERN_LIBS), $(call EXTERN_LIB_RULES,$(lib))))
 $(foreach lib, $(EXTERN_LIBS), $(eval $(call EXTERN_LIB_RULES,$(lib))))
 
 
