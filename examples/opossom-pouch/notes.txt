@@ -1,0 +1,18 @@
+tockloader install --board nrf52dk --openocd build/ble-app.tab
+tockloader list --board nrf52dk --openocd
+
+//flash blasts away anything on the bouard.
+tockloader flash --board nrf52dk --openocd
+
+cd ~/Projects/tock/boards/nordic/nrf52840_dongle
+make
+tockloader flash --board nrf52dk --openocd ~/Projects/tock/target/thumbv7em-none-eabi/release/nrf52840_dongle.bin
+
+openocd -c " source [find board/nordic_nrf52_dk.cfg]; adapter speed 2000;  init; reset init; halt; flash fillb 0x30000 0xff 512; exit"
+
+tockloader erase-apps --board nrf52dk --openocd  --debug
+
+
+On switch, Iterate payload,  begin advertising interval, send payload in gap_add_manufacturer_specific_data,
+On Switch hold, establish a connection using GATT services for provisioning and interigation
+On switch, and scan response request, return full history on subsequent advertising packets until current.
