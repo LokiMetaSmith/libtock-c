@@ -2,7 +2,7 @@
 
 # Specify this directory relative to the current application.
 #TOCK_USERLAND_BASE_DIR = ../../libtock-c
-TOCK_USERLAND_BASE_DIR = ../..
+TOCK_USERLAND_BASE_DIR = ../../..
 # Which files to compile.
 C_SRCS := $(wildcard *.c)
 
